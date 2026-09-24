@@ -13,9 +13,9 @@
 - Ganapati Live (https://ganapatilive.com): edge-only live-stream viewer for Ganeshotsav on Cloudflare Workers.
 
 ## Links
-- Home: https://s2606.github.io/
-- Background: https://s2606.github.io/background/
-- Contact: https://s2606.github.io/contact/
-- Résumé: https://s2606.github.io/resume.pdf
+- Home: https://shagunkhemka.me/
+- Background: https://shagunkhemka.me/background/
+- Contact: https://shagunkhemka.me/contact/
+- Résumé: https://shagunkhemka.me/resume.pdf
 - GitHub: https://github.com/S2606
 - LinkedIn: https://www.linkedin.com/in/shagun-khemka/

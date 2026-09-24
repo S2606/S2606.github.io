@@ -21,6 +21,6 @@ npm run build    # outputs to dist/
 
 Create a Cloudflare Web Analytics site and save its token as the repository variable `CF_BEACON_TOKEN`. The beacon is only included when the variable is set.
 
-## Custom domain
+## Domain
 
-Add the domain in the repository's Pages settings, then set `site` in `astro.config.mjs` and the sitemap URL in `public/robots.txt` to the new domain.
+Served at https://shagunkhemka.me (DNS at Cloudflare, custom domain set in the repository's Pages settings). If the domain changes, update `site` in `astro.config.mjs`, `public/robots.txt` and `public/llms.txt`.
