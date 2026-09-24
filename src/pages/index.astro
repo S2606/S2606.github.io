@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+
+const experience = [
+  {
+    company: 'JioHotstar',
+    role: 'Senior Software Engineer, Backend',
+    dates: '2024 – now',
+    text: 'Subscriptions platform for 280M+ users. Architected and own the P0 read path serving entitlement checks to Identity and Playback at ~50K RPS, holding P99 SLAs on ~20% fewer pods. Re-architected purchase and upgrade flows (~20% revenue growth, Astral Team Award) and led the cross-team migration of 14M+ JioCinema subscribers. On-call for IPL at 30M+ concurrent viewers.',
+  },
+  {
+    company: 'FamPay',
+    note: '(YC S19)',
+    role: 'Software Engineer, Backend',
+    dates: '2020 – 2024',
+    text: 'Led a team of four on the FamCard platform: 5M+ virtual cards, 200K+ physical deliveries, ₹10M+ in daily transactions, and ~30% lower delivery cost. Built recharge, gift card and bill-payment products for 5M+ monthly transacting users, around 60% of company revenue. Ran hiring and mentored 5+ engineers into full-time roles.',
+  },
+  {
+    company: 'Instamojo',
+    role: 'Software Engineer, Backend',
+    dates: '2019 – 2020',
+    text: 'Automated merchant onboarding, cutting KYC resubmissions by ~25%, and built the reseller product-ingestion service that onboarded ~15K products in its first month. Converted from intern to full-time.',
+  },
+];
+---
+<Base pageType="ProfilePage">
+  <section class="hero">
+    <img class="avatar" src="/shagun.jpg" alt="Shagun Khemka, Senior Software Engineer at JioHotstar" width="112" height="112" fetchpriority="high" />
+    <h1 class="hi">Hey, I'm Shagun Khemka.</h1>
+  </section>
+  <p class="tag">
+    I build backend platforms that <em>stay fast under heavy load</em>, and production AI systems that stay cheap and correct.
+  </p>
+  <p class="lede">
+    Senior Software Engineer at <b>JioHotstar</b>, working on the subscriptions and entitlements platform.
+    Previously <b>FamPay (YC S19)</b> and <b>Instamojo</b>. Based in Bengaluru.
+  </p>
+  <div class="links">
+    <a href="https://github.com/S2606" target="_blank" rel="me noopener">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/shagun-khemka/" target="_blank" rel="me noopener">LinkedIn ↗</a>
+    <a href="mailto:shagun.khemka60@gmail.com">Email</a>
+  </div>
+
+  <h2 class="sec">Experience</h2>
+  {experience.map((e) => (
+    <div class="job">
+      <div>
+        <div class="co">
+          {e.company}{e.note && <small> {e.note}</small>}<span class="ro">{e.role}</span>
+        </div>
+        <p class="d">{e.text}</p>
+      </div>
+      <div class="dt">{e.dates}</div>
+    </div>
+  ))}
+
+  <h2 class="sec">Projects</h2>
+
+  <article class="pj">
+    <div class="top">
+      <h3>Document extraction platform<span class="st">in production</span></h3>
+      <span class="l private">private</span>
+    </div>
+    <p class="d">An LLM pipeline, built for a logistics ERP software company, that turns scanned, handwritten consignment notes into validated, structured data. I designed, built and run it on my own.</p>
+    <ul>
+      <li><b>Model cascade:</b> Claude Haiku extracts every document and matches Sonnet on money and weight fields (100%) at <b>~60% lower cost</b>. Only fields the review policy flags escalate to Sonnet.</li>
+      <li><b>Evals as a release gate:</b> every model, prompt or provider change is scored field by field against a labelled golden set. Eval-driven output trimming cut Sonnet's cost per document by <b>52%</b> while accuracy rose from 92.7% to 100%.</li>
+      <li><b>Guardrails and human review:</b> schema validation, GSTIN and date repair, and fuzzy station matching. Low-confidence output goes to a review queue instead of the ERP.</li>
+      <li><b>Gateway, cost and observability:</b> Anthropic, OpenAI, Gemini, Mistral and Sarvam sit behind one interface, and tenants can bring their own keys. Every call is metered per tenant, and dashboards track cost per document, escalation rate and latency.</li>
+    </ul>
+    <div class="tags"><span>Model routing</span><span>Evals</span><span>Structured extraction</span><span>Human-in-the-loop</span><span>LLM cost metering</span></div>
+    <p class="stack">Python · Django · Postgres · Claude / GPT / Gemini / Mistral / Sarvam · Pulumi · Prometheus + Grafana</p>
+  </article>
+
+  <article class="pj">
+    <div class="top">
+      <h3>ConsumerBuddy<span class="st">private beta</span></h3>
+      <a class="l" href="https://consumerbuddy.in" target="_blank" rel="noopener">consumerbuddy.in ↗</a>
+    </div>
+    <p class="d">An AI product that helps Indian consumers draft and file consumer-court complaints without a lawyer. I built and run it end to end.</p>
+    <ul>
+      <li><b>Grounded drafting:</b> a guided flow collects the facts, checks jurisdiction and limitation rules, and has the user confirm the facts before the LLM drafts a ready-to-file complaint.</li>
+      <li><b>Runtime model routing:</b> a different model for each task (Sonnet drafts, Haiku handles lookups). Each user cohort can get its own models, switched from the admin panel without a redeploy.</li>
+      <li><b>Cost and abuse controls:</b> a per-call cost ledger in INR, with hourly and daily AI caps per user.</li>
+      <li><b>LLM observability and data residency:</b> tokens, latency and failures tracked by feature and provider, with alerts. A Sarvam option keeps data in India, and lawyers review output quality.</li>
+    </ul>
+    <div class="tags"><span>Multi-model routing</span><span>Grounding</span><span>Cost controls</span><span>LLM observability</span><span>Data residency</span></div>
+    <p class="stack">Next.js · FastAPI · Postgres · Claude / GPT / Gemini / Sarvam · AWS via Pulumi · Prometheus + Alertmanager</p>
+  </article>
+
+  <article class="pj">
+    <div class="top">
+      <h3>Ganapati Live<span class="st">Ganeshotsav 2026</span></h3>
+      <a class="l" href="https://ganapatilive.com" target="_blank" rel="noopener">ganapatilive.com ↗</a>
+    </div>
+    <p class="d">Watch live streams from 14 Mumbai and Pune pandals on one screen.</p>
+    <ul>
+      <li>Finds live streams through free RSS feeds and one batched API call, staying inside YouTube's daily quota.</li>
+      <li>No server and no build step: it runs entirely at the edge on a Cloudflare Worker, KV and a cron that pauses overnight.</li>
+      <li>Built and launched in <b>a few hours</b>, with traffic from <b>India, the US, Belgium and Singapore</b> during the festival.</li>
+    </ul>
+    <p class="stack">Cloudflare Workers · KV · YouTube Data API · vanilla JS</p>
+  </article>
+
+  <p class="more">Open source, education and certifications → <a href="/background/">Background</a></p>
+</Base>

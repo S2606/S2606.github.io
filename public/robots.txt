@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://s2606.github.io/sitemap-index.xml

@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+
+const cards = [
+  { key: 'Email', value: 'shagun.khemka60@gmail.com', note: 'Roles, collaborations, anything else', href: 'mailto:shagun.khemka60@gmail.com', primary: true },
+  { key: 'Book a call', value: 'cal.com/shagun-khemka', note: 'Free intro call · pick a slot that suits you', href: 'https://cal.com/shagun-khemka' },
+  { key: 'Mentoring', value: 'topmate.io/shagun_khemka', note: '1:1 sessions · career, system design, interview prep', href: 'https://topmate.io/shagun_khemka' },
+  { key: 'Résumé', value: 'Download PDF ↓', note: 'One page · updated Sep 2026', href: '/resume.pdf' },
+  { key: 'LinkedIn', value: 'in/shagun-khemka', note: 'A note with your connection request helps', href: 'https://www.linkedin.com/in/shagun-khemka/' },
+  { key: 'GitHub', value: 'github.com/S2606', note: 'Open source and experiments', href: 'https://github.com/S2606' },
+];
+const external = (href: string) => href.startsWith('http');
+---
+<Base
+  title="Contact Shagun Khemka · Roles, Calls & Mentoring"
+  description="Contact Shagun Khemka, Senior Backend Engineer in Bengaluru, about backend or AI platform roles. Email, book a call on Cal.com or mentoring on Topmate."
+  pageType="ContactPage"
+  crumb="Contact"
+>
+  <h1 class="pg">Let's talk.</h1>
+  <p class="pg-sub">Email is the fastest way to reach me. For a conversation, book a slot directly. I reply to every real message, usually within two or three working days.</p>
+
+  <div class="cgrid">
+    {cards.map((c) => (
+      <a
+        class:list={['ccard', { primary: c.primary }]}
+        href={c.href}
+        target={external(c.href) ? '_blank' : undefined}
+        rel={external(c.href) ? 'noopener' : undefined}
+      >
+        <div class="k">{c.key}</div>
+        <div class="v">{c.value}</div>
+        <div class="s">{c.note}</div>
+      </a>
+    ))}
+  </div>
+
+  <h2 class="sec">Good reasons to reach out</h2>
+  <div class="reasons">
+    <div>
+      <span>→</span>
+      <span>Engineering roles<small>Backend platforms, payments and subscriptions, AI or LLM platform teams. Please include team, scope and location. <a href="mailto:shagun.khemka60@gmail.com">Email</a></small></span>
+    </div>
+    <div>
+      <span>→</span>
+      <span>Mentoring<small>Career guidance, system design, backend interview prep and resume reviews. <a href="https://topmate.io/shagun_khemka" target="_blank" rel="noopener">Topmate</a></small></span>
+    </div>
+  </div>
+</Base>

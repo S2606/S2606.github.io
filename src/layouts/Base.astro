@@ -1,0 +1,154 @@
+---
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/source-serif-4/wght.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
+import '../styles/global.css';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import serifLatin from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2?url';
+import { NAME, personSchema, websiteSchema, breadcrumbSchema } from '../data/seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pageType?: 'ProfilePage' | 'AboutPage' | 'ContactPage' | 'WebPage';
+  crumb?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'Shagun Khemka · Senior Backend Engineer, AI Systems · Bengaluru',
+  description = 'Shagun Khemka, Senior Software Engineer at JioHotstar, builds high-scale subscription platforms and production AI systems with LLM routing and evals.',
+  pageType = 'WebPage',
+  crumb,
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site!;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonical = new URL(Astro.url.pathname, site);
+const ogImage = new URL('/og.png', site);
+const beaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
+const nav = [
+  { href: '/background/', label: 'Background' },
+  { href: '/contact/', label: 'Contact' },
+];
+const isCurrent = (href: string) => path === href.replace(/\/$/, '');
+
+const page: Record<string, unknown> = {
+  '@type': pageType,
+  '@id': `${canonical}#page`,
+  url: canonical.toString(),
+  name: title,
+  description,
+  isPartOf: { '@id': `${site}#website` },
+  inLanguage: 'en-IN',
+};
+if (pageType === 'ProfilePage') page.mainEntity = { '@id': `${site}#person` };
+else page.about = { '@id': `${site}#person` };
+
+const graph = [websiteSchema(site), personSchema(site), page];
+if (crumb) graph.push(breadcrumbSchema(site, [{ name: 'Home', path: '/' }, { name: crumb, path: Astro.url.pathname }]));
+const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={NAME} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href={serifLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="me" href="https://github.com/S2606" />
+    <link rel="me" href="https://www.linkedin.com/in/shagun-khemka/" />
+    <meta name="theme-color" content="#fafbfc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:site_name" content={NAME} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content={pageType === 'ProfilePage' ? 'profile' : 'website'} />
+    {pageType === 'ProfilePage' && <meta property="profile:first_name" content="Shagun" />}
+    {pageType === 'ProfilePage' && <meta property="profile:last_name" content="Khemka" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shagun Khemka, Senior Software Engineer: backend platforms and production AI systems" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hdr">
+        <a class="logo" href="/" aria-label="Shagun Khemka, home">shagun<span>.</span>khemka</a>
+        <nav class="nav" aria-label="Main">
+          {nav.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
+          <a class="cv" href="/resume.pdf">Resume ↓</a>
+          <button class="tg" type="button" data-theme-toggle aria-label="Toggle dark mode">◐</button>
+        </nav>
+        <details class="menu">
+          <summary aria-label="Menu"><i></i></summary>
+          <nav aria-label="Main">
+            {nav.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
+            <a href="/resume.pdf">Resume ↓</a>
+            <button type="button" data-theme-toggle>Toggle dark mode</button>
+          </nav>
+        </details>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="ftr">
+        <div>© {new Date().getFullYear()} Shagun Khemka · Views are my own, not my employer's.</div>
+        <nav aria-label="Elsewhere">
+          <a href="https://github.com/S2606" rel="me noopener" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/shagun-khemka/" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="mailto:shagun.khemka60@gmail.com">Email</a>
+        </nav>
+      </footer>
+    </div>
+
+    <script is:inline>
+      document.querySelectorAll('[data-theme-toggle]').forEach((btn) =>
+        btn.addEventListener('click', () => {
+          const root = document.documentElement;
+          const dark = root.dataset.theme
+            ? root.dataset.theme === 'dark'
+            : matchMedia('(prefers-color-scheme: dark)').matches;
+          const next = dark ? 'light' : 'dark';
+          root.dataset.theme = next;
+          try { localStorage.setItem('theme', next); } catch (e) {}
+        })
+      );
+    </script>
+    {beaconToken && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: beaconToken })}
+      />
+    )}
+  </body>
+</html>

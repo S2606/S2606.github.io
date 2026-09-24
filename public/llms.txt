@@ -1,0 +1,21 @@
+# Shagun Khemka
+
+> Senior Software Engineer (Backend) at JioHotstar, Bengaluru, India. Builds high-scale subscription platforms and production AI systems: LLM routing, evals and cost-aware inference.
+
+## Experience
+- JioHotstar, Senior Software Engineer, Backend (2024–now): subscriptions platform for 280M+ users; architected the P0 entitlement read path at ~50K RPS; re-architected purchase and upgrade flows (~20% revenue growth, Astral Team Award); led the migration of 14M+ JioCinema subscribers.
+- FamPay (YC S19), Software Engineer, Backend (2020–2024): led a team of four on the FamCard platform (5M+ cards); built products behind ~60% of company revenue.
+- Instamojo, Software Engineer, Backend (2019–2020): merchant onboarding automation and reseller product ingestion.
+
+## Projects
+- Document extraction platform: LLM pipeline for a logistics ERP software company. Haiku-first cascade at ~60% lower cost; eval-driven changes cut cost per document by 52% while accuracy rose to 100%.
+- ConsumerBuddy (https://consumerbuddy.in): AI drafting of consumer-court complaints in India, with per-cohort model routing and cost controls.
+- Ganapati Live (https://ganapatilive.com): edge-only live-stream viewer for Ganeshotsav on Cloudflare Workers.
+
+## Links
+- Home: https://s2606.github.io/
+- Background: https://s2606.github.io/background/
+- Contact: https://s2606.github.io/contact/
+- Résumé: https://s2606.github.io/resume.pdf
+- GitHub: https://github.com/S2606
+- LinkedIn: https://www.linkedin.com/in/shagun-khemka/

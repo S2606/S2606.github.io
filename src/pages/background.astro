@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+
+const honours = [
+  { title: 'Achiever Award 2017–18', rest: ', VIT: for excellence in a national-level event and in academics' },
+  { title: 'Google India × Udacity Scholarship', rest: ' for the Android Nanodegree', year: '2018' },
+  { title: 'Top 10% of programmers', rest: ' on HackerEarth', year: '2017' },
+  { title: '1st place (track)', rest: ', Code2Create by ACM VIT, for an AR/VR app', year: '2017' },
+  { title: '2nd place', rest: ', IoT event, Connect India Challenge at NIT Trichy', year: '2017' },
+];
+
+const certifications = [
+  { name: 'Generative AI Nanodegree', year: 2024, url: 'https://www.udacity.com/certificate/e/33f2e972-e53e-11ee-8ca3-43f01c9f7762' },
+  { name: 'Blockchain Developer Nanodegree', year: 2022, url: 'https://www.udacity.com/certificate/WGZL4GKX' },
+  { name: 'Front End Web Developer Nanodegree', year: 2021, url: 'https://www.udacity.com/certificate/LGVZXDU5' },
+  { name: 'Cloud DevOps Engineer Nanodegree', year: 2021, url: 'https://www.udacity.com/certificate/GT2TFMCJ' },
+  { name: 'React Nanodegree', year: 2020, url: 'https://www.udacity.com/certificate/5TQVDVY4' },
+];
+---
+<Base
+  title="Background: Open Source, Education & Certifications · Shagun Khemka"
+  description="Shagun Khemka's open source work (FOSSASIA, google/go-github), education at VIT and IIIT Bangalore, and Udacity Generative AI and Cloud DevOps nanodegrees."
+  pageType="AboutPage"
+  crumb="Background"
+>
+  <h1 class="pg">Background</h1>
+  <p class="pg-sub">Open source, education and certifications. For what I work on today, see <a href="/">Home</a>.</p>
+
+  <h2 class="sec" style="margin-top: 44px">Open source</h2>
+  <div class="job">
+    <div>
+      <div class="co">FOSSASIA · google/go-github</div>
+      <p class="d">
+        #5 all-time contributor to FOSSASIA's <a href="https://github.com/fossasia/badgeyay" target="_blank" rel="noopener"><b>badgeyay</b></a>: CI, Docker and automated Heroku deploys.
+        Merged fixes in <a href="https://github.com/google/go-github" target="_blank" rel="noopener"><b>google/go-github</b></a> and FOSSASIA's SUSI, loklak and Open Event projects.
+      </p>
+    </div>
+    <div class="dt">2017 – 2018</div>
+  </div>
+
+  <h2 class="sec">Education</h2>
+  <div class="job tight">
+    <div><div class="co">IIIT Bangalore<span class="ro">PG Diploma, Software Development (Blockchain) · CGPA 3.73/4</span></div></div>
+    <div class="dt">2019 – 2020</div>
+  </div>
+  <div class="job tight">
+    <div>
+      <div class="co">VIT Vellore<span class="ro">Bachelor's, Information Technology · CGPA 8.32/10</span></div>
+      <ul class="hon">
+        {honours.map((h) => (
+          <li><b>{h.title}</b>{h.rest}{h.year && <span> · {h.year}</span>}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="dt">2015 – 2019</div>
+  </div>
+
+  <h2 class="sec">Certifications</h2>
+  {certifications.map((c) => (
+    <div class="job tight">
+      <div><div class="co">{c.name}<span class="ro">Udacity · {c.year}</span></div></div>
+      <a class="verify" href={c.url} target="_blank" rel="noopener">verify ↗</a>
+    </div>
+  ))}
+</Base>
