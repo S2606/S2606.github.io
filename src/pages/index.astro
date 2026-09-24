@@ -82,9 +82,9 @@ const experience = [
       <li><b>Grounded drafting:</b> a guided flow collects the facts, checks jurisdiction and limitation rules, and has the user confirm the facts before the LLM drafts a ready-to-file complaint.</li>
       <li><b>Runtime model routing:</b> a different model for each task (Sonnet drafts, Haiku handles lookups). Each user cohort can get its own models, switched from the admin panel without a redeploy.</li>
       <li><b>Cost and abuse controls:</b> a per-call cost ledger in INR, with hourly and daily AI caps per user.</li>
-      <li><b>LLM observability and data residency:</b> calls, tokens, latency, errors and INR cost tracked per feature, provider and model. A Sarvam option keeps data in India, and drafts go to a consumer-law advocate for sign-off before public launch.</li>
+      <li><b>LLM observability and legal review:</b> calls, tokens, latency, errors and INR cost tracked per feature, provider and model. Drafts go to a consumer-law advocate for sign-off before public launch.</li>
     </ul>
-    <div class="tags"><span>Multi-model routing</span><span>Grounding</span><span>Cost controls</span><span>LLM observability</span><span>Data residency</span></div>
+    <div class="tags"><span>Multi-model routing</span><span>Grounding</span><span>Cost controls</span><span>LLM observability</span></div>
     <p class="stack">Next.js · FastAPI · Postgres · Claude / GPT / Gemini / Sarvam · AWS via Pulumi · Prometheus + Alertmanager</p>
   </article>
 
