@@ -10,7 +10,6 @@
 ## Projects
 - Document extraction platform: LLM pipeline for a logistics ERP software company. Haiku-first cascade at ~60% lower cost; eval-driven changes cut cost per document by 52% while accuracy rose to 100%.
 - ConsumerBuddy (https://consumerbuddy.in): AI drafting of consumer-court complaints in India, with per-cohort model routing and cost controls.
-- Ganapati Live (https://ganapatilive.com): edge-only live-stream viewer for Ganeshotsav on Cloudflare Workers.
 
 ## Links
 - Home: https://shagunkhemka.me/
