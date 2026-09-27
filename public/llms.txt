@@ -8,7 +8,7 @@
 - Instamojo, Software Engineer, Backend (2019–2020): merchant onboarding automation and reseller product ingestion.
 
 ## Projects
-- Document extraction platform: LLM pipeline for a logistics ERP software company. Field-level evals choose the production model; Gemini 3.8 Flash and GPT-6 Luna run in production with a phased per-tenant rollout. On the latest eval GPT-6 Luna is 8x cheaper and ~45% faster than Gemini Flash, with money and weight fields at 100%.
+- Document extraction platform: LLM pipeline for a logistics ERP software company. Field-level evals across Claude, GPT, Gemini, Qwen, Mistral and Sarvam choose the production model; Gemini 3.8 Flash and GPT-6 Luna run in production with a phased per-tenant rollout. On the latest eval GPT-6 Luna is 8x cheaper and ~45% faster than Gemini Flash, with money and weight fields at 100%.
 - ConsumerBuddy (https://consumerbuddy.in): AI drafting of consumer-court complaints in India, with per-cohort model routing and cost controls.
 
 ## Links
