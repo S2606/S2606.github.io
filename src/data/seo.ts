@@ -1,6 +1,6 @@
 // Structured data (schema.org) shared across pages.
 export const NAME = 'Shagun Khemka';
-export const EMAIL = 'shagun.khemka60@gmail.com';
+export const EMAIL = 'shagun.khemka75@gmail.com';
 export const PROFILES = [
   'https://github.com/S2606',
   'https://www.linkedin.com/in/shagun-khemka/',
