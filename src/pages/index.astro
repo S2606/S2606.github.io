@@ -63,13 +63,13 @@ const experience = [
     </div>
     <p class="d">An LLM pipeline, built for a logistics ERP software company, that turns scanned, handwritten consignment notes into validated, structured data. I designed, built and run it on my own.</p>
     <ul>
-      <li><b>Model cascade:</b> Claude Haiku extracts every document and matches Sonnet on money and weight fields (100%) at <b>~60% lower cost</b>. Only fields the review policy flags escalate to Sonnet.</li>
-      <li><b>Evals as a release gate:</b> every model, prompt or provider change is scored field by field against a labelled golden set. Eval-driven output trimming cut Sonnet's cost per document by <b>52%</b> while accuracy rose from 92.7% to 100%.</li>
+      <li><b>Evals pick the model:</b> every model, prompt or provider change is scored field by field against a labelled golden set before it ships. I evaluated Claude, GPT and Gemini side by side, and the cheapest models that held 100% on money and weight fields went to production.</li>
+      <li><b>Phased model rollout:</b> production runs Gemini 3.8 Flash and GPT-6 Luna, switched tenant by tenant from the admin panel with no redeploy. On the latest eval, GPT-6 Luna is <b>8× cheaper and ~45% faster</b> than Gemini Flash, with money and weight fields at <b>100%</b>.</li>
       <li><b>Guardrails and accept policy:</b> GSTIN checksum and state checks, date and total reconciliation, and fuzzy station matching. A document is auto-added only when every mandatory field passes; otherwise it's flagged for human review with the exact fields named.</li>
-      <li><b>Gateway, cost and observability:</b> Anthropic, OpenAI, Gemini, Mistral and Sarvam sit behind one interface, and tenants can bring their own keys. Every call is metered per tenant, and dashboards track cost per document, escalation rate and latency.</li>
+      <li><b>Gateway, cost and observability:</b> Anthropic, OpenAI, Gemini, Mistral and Sarvam sit behind one interface, and tenants can bring their own keys. Every call is metered per tenant, and dashboards track cost per document and latency.</li>
     </ul>
-    <div class="tags"><span>Model routing</span><span>Evals</span><span>Structured extraction</span><span>Human-in-the-loop</span><span>LLM cost metering</span></div>
-    <p class="stack">Python · Django · Postgres · Claude / GPT / Gemini / Mistral / Sarvam · Pulumi · Prometheus + Grafana</p>
+    <div class="tags"><span>Model selection</span><span>Evals</span><span>Structured outputs</span><span>Human-in-the-loop</span><span>LLM cost metering</span></div>
+    <p class="stack">Python · Django · Postgres · GPT / Gemini (production) · Claude, Mistral, Sarvam (evaluated) · Pulumi · Prometheus + Grafana</p>
   </article>
 
   <article class="pj">
