@@ -79,13 +79,13 @@ const experience = [
     </div>
     <p class="d">An AI product that helps Indian consumers draft and file consumer-court complaints without a lawyer. I built and run it end to end.</p>
     <ul>
-      <li><b>Grounded drafting:</b> a guided flow collects the facts, checks jurisdiction and limitation rules, and has the user confirm the facts before the LLM drafts a ready-to-file complaint.</li>
-      <li><b>Runtime model routing:</b> a different model for each task (Sonnet drafts, Haiku handles lookups). Each user cohort can get its own models, switched from the admin panel without a redeploy.</li>
-      <li><b>Cost and abuse controls:</b> a per-call cost ledger in INR, with hourly and daily AI caps per user.</li>
+      <li><b>Vision and tool use:</b> Claude reads uploaded evidence (PDFs and photos) to write court-format annexure descriptions, and uses its web-search tool to find the opposite party's registered address and legal contacts.</li>
+      <li><b>Runtime model routing:</b> a different model per task (Sonnet drafts, Haiku handles lookups and vision), configurable per user cohort from the admin panel without a redeploy. Each paid document pins the model plan it was drafted with, so re-renders are reproducible.</li>
+      <li><b>Cost and abuse controls:</b> a per-call cost ledger in INR, hourly and daily AI caps per user, and input limits on every AI feature.</li>
       <li><b>LLM observability and legal review:</b> calls, tokens, latency, errors and INR cost tracked per feature, provider and model. Drafts go to a consumer-law advocate for sign-off before public launch.</li>
     </ul>
-    <div class="tags"><span>Multi-model routing</span><span>Grounding</span><span>Cost controls</span><span>LLM observability</span></div>
-    <p class="stack">Next.js · FastAPI · Postgres · Claude / GPT / Gemini / Sarvam · AWS via Pulumi · Prometheus + Alertmanager</p>
+    <div class="tags"><span>Multi-model routing</span><span>Vision</span><span>Tool use</span><span>Cost controls</span><span>LLM observability</span></div>
+    <p class="stack">Next.js · FastAPI · Postgres · Claude Sonnet + Haiku (production) · GPT, Gemini, Sarvam (integrated) · AWS via Pulumi · Prometheus + Grafana</p>
   </article>
 
 
