@@ -63,8 +63,8 @@ const experience = [
     </div>
     <p class="d">An LLM pipeline, built for a logistics ERP software company, that turns scanned, handwritten consignment notes into validated, structured data. I designed, built and run it on my own.</p>
     <ul>
-      <li><b>Evals pick the model:</b> every model, prompt or provider change is scored field by field against a labelled golden set before it ships. I evaluated Claude, GPT, Gemini, Qwen, Mistral and Sarvam side by side, and the cheapest models that held 100% on money and weight fields went to production.</li>
-      <li><b>Phased model rollout:</b> production runs Gemini 3.8 Flash and GPT-6 Luna, switched tenant by tenant from the admin panel with no redeploy. On the latest eval, GPT-6 Luna is <b>8× cheaper and ~45% faster</b> than Gemini Flash, with money and weight fields at <b>100%</b>.</li>
+      <li><b>Evals pick the model:</b> every model, prompt or provider change is scored field by field against a labelled golden set before it ships. I evaluated Claude, GPT, Gemini, Qwen, Mistral and Sarvam side by side, and the cheapest models that got every ledger-critical field right (total amount, invoice value and actual weight) went to production.</li>
+      <li><b>Phased model rollout:</b> production runs Gemini 3.8 Flash and GPT-6 Luna, switched tenant by tenant from the admin panel with no redeploy. On the latest eval, GPT-6 Luna is <b>8× cheaper and ~45% faster</b> than Gemini Flash, with those ledger-critical fields at <b>100%</b>.</li>
       <li><b>Guardrails and accept policy:</b> GSTIN checksum and state checks, date and total reconciliation, and fuzzy station matching. A document is auto-added only when every mandatory field passes; otherwise it's flagged for human review with the exact fields named.</li>
       <li><b>Gateway, cost and observability:</b> Anthropic, OpenAI, Gemini, Mistral and Sarvam sit behind one interface, and tenants can bring their own keys. Every call is metered per tenant, and dashboards track cost per document and latency.</li>
     </ul>
