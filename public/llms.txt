@@ -3,7 +3,7 @@
 > Senior Software Engineer (Backend) at JioHotstar, Bengaluru, India. Builds high-scale subscription platforms and production AI systems: LLM routing, evals and cost-aware inference.
 
 ## Experience
-- JioHotstar, Senior Software Engineer, Backend (2024–now): subscriptions platform for 280M+ users; architected the P0 entitlement read path at ~50K RPS; re-architected purchase and upgrade flows (~20% revenue growth, Astral Team Award); led the migration of 14M+ JioCinema subscribers.
+- JioHotstar, Senior Software Engineer, Backend (2024–now): subscriptions platform for 280M+ users; architected the P0 entitlement read path at ~50K RPS; re-architected purchase and upgrade flows (~20% revenue growth, Astral Team Award); led the migration of 14M+ JioCinema subscribers; migrated a service to AWS Graviton + Java 21 (~20% compute savings) and packaged the playbook as Claude and Codex agent skills for team-wide self-serve migrations.
 - FamPay (YC S19), Software Engineer, Backend (2020–2024): led a team of four on the FamCard platform (5M+ cards); built products behind ~60% of company revenue.
 - Instamojo, Software Engineer, Backend (2019–2020): merchant onboarding automation and reseller product ingestion.
 
