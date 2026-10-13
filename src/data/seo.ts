@@ -22,7 +22,7 @@ export function personSchema(site: URL) {
     description:
       'Senior backend engineer building high-scale subscription platforms and production AI systems: LLM routing, evals and cost-aware inference.',
     worksFor: { '@type': 'Organization', name: 'JioHotstar', url: 'https://www.hotstar.com' },
-    address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressRegion: 'Karnataka', addressCountry: 'IN' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressRegion: 'Maharashtra', addressCountry: 'IN' },
     alumniOf: [
       { '@type': 'CollegeOrUniversity', name: 'Vellore Institute of Technology' },
       { '@type': 'CollegeOrUniversity', name: 'International Institute of Information Technology Bangalore' },
