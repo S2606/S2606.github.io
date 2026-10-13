@@ -4,6 +4,7 @@ export const EMAIL = 'shagun.khemka60@gmail.com';
 export const PROFILES = [
   'https://github.com/S2606',
   'https://www.linkedin.com/in/shagun-khemka/',
+  'https://x.com/shagun_p',
   'https://topmate.io/shagun_khemka',
   'https://cal.com/shagun-khemka',
 ];
