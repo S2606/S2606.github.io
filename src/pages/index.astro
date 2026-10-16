@@ -6,20 +6,34 @@ const experience = [
     company: 'JioHotstar',
     role: 'Senior Software Engineer, Backend',
     dates: '2024 – now',
-    text: 'Subscriptions platform for 280M+ users. Architected and own the P0 read path serving entitlement checks to Identity and Playback at ~50K RPS, holding P99 SLAs on ~20% fewer pods. Re-architected purchase and upgrade flows (~20% revenue growth, Astral Team Award) and led the cross-team migration of 14M+ JioCinema subscribers. Migrated a legacy service to AWS Graviton and Java 21 (~20% compute savings) and turned the playbook into Claude and Codex agent skills the team uses to self-serve similar migrations. On-call for IPL at 30M+ concurrent viewers. Backend hiring panelist for LLD and HLD (system design) rounds, with 20+ interviews.',
+    bullets: [
+      'Architected and own the <b>P0 entitlement read path</b> at <b>~50K RPS</b>, holding P99 SLAs on <b>~20% fewer pods</b>',
+      'Re-architected purchase and upgrade flows for <b>~20% revenue growth</b>; team won <b>“Astral Team Award”</b> (2026)',
+      'Led the cross-team migration of <b>14M+ JioCinema subscribers</b>',
+      'Helped build the JioCinema entitlement service serving user attributes to core services (Go, Spanner, Redis); team won <b>“Gangstar of the Quarter”</b> (2024)',
+      '<b>~20% compute savings</b> from a Graviton + Java 21 migration, packaged as Claude and Codex agent skills for self-serve rollout',
+      'IPL on-call at <b>30M+ concurrent viewers</b> · LLD/HLD hiring panelist (<b>20+ interviews</b>)',
+    ],
   },
   {
     company: 'FamPay',
     note: '(YC S19)',
     role: 'Software Engineer, Backend',
     dates: '2020 – 2024',
-    text: 'Led a team of four on the FamCard platform: 5M+ virtual cards, 200K+ physical deliveries, ₹10M+ in daily transactions, and ~30% lower delivery cost. Built recharge, gift card and bill-payment products for 5M+ monthly transacting users, around 60% of company revenue. Conducted 30+ backend interviews, onboarded new engineers to the team, and mentored 5+ interns and juniors into full-time roles.',
+    bullets: [
+      'Led a team of four on FamCard: <b>5M+ virtual cards</b>, <b>₹10M+ daily transactions</b>, <b>~30% lower delivery cost</b>',
+      'Built recharge, gift card and bill-payment products, around <b>60% of company revenue</b>',
+      '<b>30+ backend interviews</b>; onboarded new engineers and mentored <b>5+ interns and juniors</b> into full-time roles',
+    ],
   },
   {
     company: 'Instamojo',
     role: 'Software Engineer, Backend',
     dates: '2019 – 2020',
-    text: 'Automated merchant onboarding, cutting KYC resubmissions by ~25%, and built the reseller product-ingestion service that onboarded ~15K products in its first month. Converted from intern to full-time.',
+    bullets: [
+      'Automated merchant onboarding, cutting KYC resubmissions by <b>~25%</b>',
+      'Built reseller product ingestion that onboarded <b>~15K products</b> in its first month; converted from intern to full-time',
+    ],
   },
 ];
 ---
@@ -49,7 +63,7 @@ const experience = [
         <div class="co">
           {e.company}{e.note && <small> {e.note}</small>}<span class="ro">{e.role}</span>
         </div>
-        <p class="d">{e.text}</p>
+        <ul class="d">{e.bullets.map((b) => <li set:html={b} />)}</ul>
       </div>
       <div class="dt">{e.dates}</div>
     </div>
