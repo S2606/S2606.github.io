@@ -69,6 +69,7 @@ h2.sec { font-size: 12.5px; font-weight: 600; letter-spacing: .09em; text-transf
 .job ul.d { margin: 8px 0 0 18px; padding: 0; }
 .job ul.d li { margin-bottom: 4px; }
 .job ul.d li::marker { color: var(--accent); }
+.job .co .lg { width: 22px; height: 22px; border-radius: 5px; vertical-align: -5px; margin-right: 9px; }
 .job .dt { font-family: var(--mono); font-size: 12px; color: var(--faint); white-space: nowrap; padding-top: 4px; }
 .job.tight { padding: 14px 0; }
 .verify { font-family: var(--mono); font-size: 12px; white-space: nowrap; padding-top: 4px; }
@@ -90,6 +91,34 @@ h2.sec { font-size: 12.5px; font-weight: 600; letter-spacing: .09em; text-transf
 .stack { margin-top: 10px; font-family: var(--mono); font-size: 11.5px; color: var(--faint); }
 .more { margin-top: 48px; font-size: 14.5px; color: var(--muted); }
 .more a { font-weight: 500; }
+
+/* activity heatmap */
+.act-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; font-size: 14px; color: var(--muted); margin: 14px 0 12px; }
+.act-top b { color: var(--ink); font-weight: 600; }
+.act-top a { font-family: var(--mono); font-size: 12px; }
+/* rtl container starts a narrow screen scrolled to the latest weeks */
+.act-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; direction: rtl; }
+.act-svg { display: block; direction: ltr; }
+.act-svg text { font-family: var(--sans); font-size: 10px; fill: var(--faint); }
+.act-svg .l0, .act-key .l0 { fill: var(--line); background: var(--line); }
+.act-svg .l1, .act-key .l1 { fill: color-mix(in srgb, var(--accent) 30%, var(--bg)); background: color-mix(in srgb, var(--accent) 30%, var(--bg)); }
+.act-svg .l2, .act-key .l2 { fill: color-mix(in srgb, var(--accent) 52%, var(--bg)); background: color-mix(in srgb, var(--accent) 52%, var(--bg)); }
+.act-svg .l3, .act-key .l3 { fill: color-mix(in srgb, var(--accent) 76%, var(--bg)); background: color-mix(in srgb, var(--accent) 76%, var(--bg)); }
+.act-svg .l4, .act-key .l4 { fill: var(--accent); background: var(--accent); }
+.act-key { display: flex; justify-content: flex-end; align-items: center; gap: 3px; font-size: 11.5px; color: var(--faint); margin-top: 8px; }
+.act-key i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+.act-key i:first-of-type { margin-left: 4px; }
+.act-key i:last-of-type { margin-right: 4px; }
+
+/* closing call to action */
+.cta { display: flex; gap: 18px; align-items: flex-start; margin-top: 40px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.cta-av { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 40%; flex-shrink: 0; box-shadow: 0 0 0 1px var(--line); }
+.cta-h { font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.3; }
+.cta-s { font-size: 14.5px; color: var(--muted); margin-top: 4px; }
+.cta-b { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 14px; font-size: 14px; font-weight: 500; }
+.btn { background: var(--accent); color: var(--bg); padding: 8px 16px; border-radius: 8px; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+@media (max-width: 480px) { .cta { flex-direction: column; padding: 20px; } }
 
 /* background */
 .hon { list-style: none; margin-top: 10px; }

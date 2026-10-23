@@ -1,9 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import Activity from '../components/Activity.astro';
 
 const experience = [
   {
     company: 'JioHotstar',
+    logo: '/logos/jiohotstar.png',
     role: 'Senior Software Engineer, Backend',
     dates: '2024 – now',
     bullets: [
@@ -17,6 +19,7 @@ const experience = [
   },
   {
     company: 'FamPay',
+    logo: '/logos/fampay.png',
     note: '(YC S19)',
     role: 'Software Engineer, Backend',
     dates: '2020 – 2024',
@@ -28,6 +31,7 @@ const experience = [
   },
   {
     company: 'Instamojo',
+    logo: '/logos/instamojo.png',
     role: 'Software Engineer, Backend',
     dates: '2019 – 2020',
     bullets: [
@@ -50,10 +54,9 @@ const experience = [
     Previously <b>FamPay (YC S19)</b> and <b>Instamojo</b>. Based in Mumbai.
   </p>
   <div class="links">
-    <a href="https://github.com/S2606" target="_blank" rel="me noopener">GitHub ↗</a>
     <a href="https://www.linkedin.com/in/shagun-khemka/" target="_blank" rel="me noopener">LinkedIn ↗</a>
+    <a href="https://github.com/S2606" target="_blank" rel="me noopener">GitHub ↗</a>
     <a href="https://x.com/shagun_p" target="_blank" rel="me noopener">X ↗</a>
-    <a href="mailto:shagun.khemka60@gmail.com">Email</a>
   </div>
 
   <h2 class="sec">Experience</h2>
@@ -61,13 +64,15 @@ const experience = [
     <div class="job">
       <div>
         <div class="co">
-          {e.company}{e.note && <small> {e.note}</small>}<span class="ro">{e.role}</span>
+          <img class="lg" src={e.logo} alt="" width="22" height="22" loading="lazy" />{e.company}{e.note && <small> {e.note}</small>}<span class="ro">{e.role}</span>
         </div>
         <ul class="d">{e.bullets.map((b) => <li set:html={b} />)}</ul>
       </div>
       <div class="dt">{e.dates}</div>
     </div>
   ))}
+
+  <Activity />
 
   <h2 class="sec">Projects</h2>
 
@@ -105,4 +110,16 @@ const experience = [
 
 
   <p class="more">Open source, education and certifications → <a href="/background/">Background</a></p>
+
+  <aside class="cta" aria-label="Work with me">
+    <img class="cta-av" src="/shagun.jpg" alt="" width="56" height="56" loading="lazy" />
+    <div>
+      <p class="cta-h">Hiring for backend, platform or AI infra?</p>
+      <p class="cta-s">I'm open to Lead / Staff roles. Email is the fastest way to reach me.</p>
+      <div class="cta-b">
+        <a class="btn" href="mailto:shagun.khemka60@gmail.com">Email me</a>
+        <a href="https://cal.com/shagun-khemka" target="_blank" rel="noopener">Book a call ↗</a>
+      </div>
+    </div>
+  </aside>
 </Base>

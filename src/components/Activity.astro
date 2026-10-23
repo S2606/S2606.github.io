@@ -1,0 +1,100 @@
+---
+// GitHub contribution heatmap for the last year, fetched at build time and
+// rendered as static SVG. If GitHub can't be reached, the section is skipped
+// so a deploy never fails on it.
+import { execSync } from 'node:child_process';
+
+const LOGIN = 'S2606';
+const CELL = 9;
+const GAP = 3;
+const STEP = CELL + GAP;
+const TOP = 18; // room for month labels
+
+type Day = { date: string; contributionCount: number; contributionLevel: string };
+
+function token(): string | undefined {
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+  try {
+    return execSync('gh auth token', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() || undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+async function fetchCalendar() {
+  const t = token();
+  if (!t) return null;
+  try {
+    const res = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: { Authorization: `bearer ${t}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `query { user(login: "${LOGIN}") { contributionsCollection { contributionCalendar {
+          totalContributions weeks { contributionDays { date contributionCount contributionLevel } } } } } }`,
+      }),
+    });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.data?.user?.contributionsCollection?.contributionCalendar ?? null;
+  } catch {
+    return null;
+  }
+}
+
+const cal = await fetchCalendar();
+const weeks: Day[][] = cal?.weeks?.map((w: { contributionDays: Day[] }) => w.contributionDays) ?? [];
+const total: number = cal?.totalContributions ?? 0;
+
+const LEVEL: Record<string, number> = {
+  NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4,
+};
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// Label a month above the first week that starts in it. A label needs ~3 weeks
+// of room, so a leading partial month whose label would collide is dropped.
+const monthLabels: { x: number; label: string; i: number }[] = [];
+let lastMonth = -1;
+weeks.forEach((w, i) => {
+  const m = new Date(w[0].date + 'T00:00:00Z').getUTCMonth();
+  if (m !== lastMonth) {
+    const prev = monthLabels[monthLabels.length - 1];
+    if (prev && i - prev.i < 3) monthLabels.pop();
+    monthLabels.push({ x: i * STEP, label: MONTHS[m], i });
+    lastMonth = m;
+  }
+});
+
+const width = weeks.length * STEP - GAP;
+const height = TOP + 7 * STEP - GAP;
+const fmt = (d: string) =>
+  new Date(d + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+const show = weeks.length > 0 && total > 0;
+---
+{show && (
+  <section class="act" aria-labelledby="act-h">
+    <h2 class="sec" id="act-h">Activity</h2>
+    <div class="act-top">
+      <span><b>{total.toLocaleString('en-US')}</b> contributions in the last year</span>
+      <a href={`https://github.com/${LOGIN}`} target="_blank" rel="noopener">github.com/{LOGIN} ↗</a>
+    </div>
+    <div class="act-scroll">
+      <svg class="act-svg" viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img"
+        aria-label={`GitHub contribution heatmap: ${total} contributions in the last year`}>
+        {monthLabels.map((m) => <text x={m.x} y="10">{m.label}</text>)}
+        {weeks.map((w, i) =>
+          w.map((d) => (
+            <rect
+              x={i * STEP}
+              y={TOP + new Date(d.date + 'T00:00:00Z').getUTCDay() * STEP}
+              width={CELL} height={CELL} rx="2"
+              class={`l${LEVEL[d.contributionLevel] ?? 0}`}
+            ><title>{`${fmt(d.date)}: ${d.contributionCount} contribution${d.contributionCount === 1 ? '' : 's'}`}</title></rect>
+          ))
+        )}
+      </svg>
+    </div>
+    <div class="act-key" aria-hidden="true">
+      Less <i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> More
+    </div>
+  </section>
+)}

@@ -44,7 +44,11 @@ export function personSchema(site: URL) {
       credentialCategory: 'certificate',
       recognizedBy: { '@type': 'Organization', name: 'Udacity' },
     })),
-    award: ['Astral Team Award, JioHotstar (Q4 FY25–26)', 'Achiever Award 2017–18, VIT'],
+    award: [
+      'Astral Team Award, JioHotstar (Q4 FY25–26)',
+      'Gangstar of the Quarter team award, JioCinema (2024)',
+      'Achiever Award 2017–18, VIT',
+    ],
     sameAs: PROFILES,
   };
 }
