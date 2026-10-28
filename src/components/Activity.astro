@@ -88,7 +88,7 @@ const show = weeks.length > 0 && total > 0;
               y={TOP + new Date(d.date + 'T00:00:00Z').getUTCDay() * STEP}
               width={CELL} height={CELL} rx="2"
               class={`l${LEVEL[d.contributionLevel] ?? 0}`}
-            ><title>{`${fmt(d.date)}: ${d.contributionCount} contribution${d.contributionCount === 1 ? '' : 's'}`}</title></rect>
+            >{d.contributionCount > 0 && <title>{`${fmt(d.date)}: ${d.contributionCount} contribution${d.contributionCount === 1 ? '' : 's'}`}</title>}</rect>
           ))
         )}
       </svg>
