@@ -15,7 +15,6 @@ export function personSchema(site: URL) {
     '@type': 'Person',
     '@id': `${url}#person`,
     name: NAME,
-    alternateName: 'Shagun Ravi Khemka',
     url,
     image: new URL('/shagun.jpg', site).toString(),
     email: `mailto:${EMAIL}`,
