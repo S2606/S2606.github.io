@@ -9,6 +9,11 @@ const honours = [
   { title: '2nd place', rest: ', IoT event, Connect India Challenge at NIT Trichy', year: '2017' },
 ];
 
+const workAwards = [
+  { title: 'Astral Team Award', rest: ', JioHotstar: team award for the add-on subscriptions launch', year: '2026' },
+  { title: 'Gangstar of the Quarter', rest: ', JioCinema: team award for the entitlement service', year: '2024' },
+];
+
 const certifications = [
   { name: 'Generative AI Nanodegree', year: 2024, url: 'https://www.udacity.com/certificate/e/33f2e972-e53e-11ee-8ca3-43f01c9f7762' },
   { name: 'Blockchain Developer Nanodegree', year: 2022, url: 'https://www.udacity.com/certificate/WGZL4GKX' },
@@ -18,13 +23,13 @@ const certifications = [
 ];
 ---
 <Base
-  title="Background: Open Source, Education & Certifications · Shagun Khemka"
-  description="Shagun Khemka's open source work (FOSSASIA, google/go-github), education at VIT and IIIT Bangalore, and Udacity Generative AI and Cloud DevOps nanodegrees."
+  title="Background: Open Source, Awards, Education & Certifications · Shagun Khemka"
+  description="Shagun Khemka's open source work (FOSSASIA, google/go-github), team awards at JioHotstar, education at IIIT Bangalore and VIT, and Udacity nanodegrees."
   pageType="AboutPage"
   crumb="Background"
 >
   <h1 class="pg">Background</h1>
-  <p class="pg-sub">Open source, education and certifications. For what I work on today, see <a href="/">Home</a>.</p>
+  <p class="pg-sub">Open source, awards, education and certifications. For what I work on today, see <a href="/">Home</a>.</p>
 
   <h2 class="sec" style="margin-top: 44px">Open source</h2>
   <div class="job">
@@ -37,6 +42,13 @@ const certifications = [
     </div>
     <div class="dt">2017 – 2018</div>
   </div>
+
+  <h2 class="sec">Awards</h2>
+  <ul class="hon aw">
+    {workAwards.map((h) => (
+      <li><b>{h.title}</b>{h.rest}<span> · {h.year}</span></li>
+    ))}
+  </ul>
 
   <h2 class="sec">Education</h2>
   <div class="job tight">

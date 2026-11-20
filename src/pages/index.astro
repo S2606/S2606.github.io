@@ -9,14 +9,12 @@ const experience = [
     role: 'Senior Software Engineer, Backend',
     dates: '2024 – 2026',
     bullets: [
-      'Architected and led a rebuild of the <b>P0 entitlement read path</b> (<b>~50K RPS</b> peak): shipped the S3 plan sync and in-memory plan SDK to production and load-tested the new service at <b>15 ms P99</b> on <b>15–20% fewer pods</b>',
       'Re-architected purchase and upgrade flows to launch <b>add-on subscriptions</b>, contributing to <b>~20% revenue growth</b>; team won <b>“Astral Team Award”</b> (2026)',
+      'Co-led the migration of <b>14M+ JioCinema subscribers</b> to Hotstar in <b>14 days</b> with <b>zero data loss</b> and <b>zero missed renewals</b>; architected the ingestion on Kafka with an audit log and dead-letter replay',
+      'Shipped the S3 plan sync and in-memory plan SDK behind the <b>P0 internal read path</b> (<b>~50K RPS</b> peak); architected and led its rebuild, load-tested at <b>15 ms P99</b> on <b>15–20% fewer pods</b>',
       'Owned the <b>plan service</b> behind <b>1K+ subscription plans</b> in <b>25+ markets</b>; automated the Disney+ Hotstar → Disney+ plan migration (<b>6K+ config changes</b>), cutting ~3 hours of manual launch-day work to <b>under 15 minutes</b> including verification; reused by a teammate for the follow-on market handover',
-      'Co-led the migration of <b>14M+ JioCinema subscribers</b> to Hotstar in <b>20 days</b> with <b>zero data loss</b> and <b>zero missed renewals</b>; architected the ingestion on Kafka with an audit log and dead-letter replay',
-      'Led a <b>SEV-1</b> response at JioCinema when Akamai blocked <b>~200K payment-gateway renewal webhooks</b>; restored <b>~70K renewals within 3 hours</b> by getting the gateway allow-listed through an expedited change and deploying a fix to the reconciliation cron, which was calling the wrong status-check API',
-      '<b>~20% compute savings</b> and <b>zero production incidents</b> from a Graviton + Java 21 migration, packaged as Claude and Codex agent skills for self-serve rollout',
-      'Helped build the JioCinema entitlement service serving user attributes to core services (Go, Spanner, Redis); team won <b>“Gangstar of the Quarter”</b> (2024)',
-      'IPL on-call at <b>30M+ concurrent viewers</b> · LLD/HLD hiring panelist (<b>20+ interviews</b>) · ran Go and Spanner knowledge-sharing sessions that got <b>3 teammates</b> contributing independently',
+      'On-call through IPL at <b>30M+ concurrent viewers</b>; led a <b>SEV-1</b> at JioCinema when Akamai blocked <b>~200K payment-gateway renewal webhooks</b>, restoring <b>~70K renewals within 3 hours</b> through an expedited allow-list change and a fix to the reconciliation cron',
+      '<b>~20% compute savings</b> and <b>zero production incidents</b> from a Graviton + Java 21 migration, packaged as Claude and Codex agent skills and reused across <b>~5 legacy Java services</b>; root-caused a Java auth-library issue while onboarding to the org\'s service-level testing framework initiative, a fix <b>2–3 other teams</b> then applied; LLD/HLD hiring panelist (<b>20+ interviews</b>)',
     ],
   },
   {
@@ -41,6 +39,12 @@ const experience = [
       'Built reseller product ingestion that onboarded <b>~15K products</b> in its first month; converted from intern to full-time (PPO)',
     ],
   },
+];
+const stack = [
+  { k: 'Backend', v: 'Go, Java (Spring Boot), Python, TypeScript, REST, GraphQL, gRPC' },
+  { k: 'Data', v: 'PostgreSQL, MySQL, Spanner, DynamoDB, Redis, Kafka, Flink' },
+  { k: 'Infrastructure', v: 'AWS, GCP, Kubernetes, CI/CD, Prometheus + Grafana, Pulumi' },
+  { k: 'AI', v: 'LLM routing, evals, guardrails, structured outputs, cost metering' },
 ];
 ---
 <Base pageType="ProfilePage">
@@ -73,6 +77,11 @@ const experience = [
       <div class="dt">{e.dates}</div>
     </div>
   ))}
+
+  <h2 class="sec">Stack</h2>
+  <dl class="stk">
+    {stack.map((r) => (<><dt>{r.k}</dt><dd>{r.v}</dd></>))}
+  </dl>
 
   <Activity />
 

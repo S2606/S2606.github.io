@@ -25,11 +25,16 @@ export function personSchema(site: URL) {
     alumniOf: [
       { '@type': 'CollegeOrUniversity', name: 'Vellore Institute of Technology' },
       { '@type': 'CollegeOrUniversity', name: 'International Institute of Information Technology Bangalore' },
+      { '@type': 'Organization', name: 'JioHotstar', url: 'https://www.hotstar.com' },
+      { '@type': 'Organization', name: 'FamPay', url: 'https://fampay.in' },
+      { '@type': 'Organization', name: 'Instamojo', url: 'https://www.instamojo.com' },
     ],
     knowsAbout: [
       'Distributed systems', 'Backend engineering', 'System design', 'Subscriptions and payments',
       'Large language models', 'LLM evaluation', 'Model routing', 'AI engineering',
-      'Java', 'Spring Boot', 'Go', 'Python', 'Kafka', 'Redis', 'PostgreSQL', 'Kubernetes', 'AWS',
+      'Go', 'Java', 'Spring Boot', 'Python', 'TypeScript', 'REST', 'GraphQL', 'gRPC',
+      'PostgreSQL', 'MySQL', 'Google Cloud Spanner', 'Amazon DynamoDB', 'Redis', 'Apache Kafka', 'Apache Flink',
+      'AWS', 'Google Cloud', 'Kubernetes', 'CI/CD', 'Prometheus', 'Grafana', 'Pulumi',
     ],
     hasCredential: [
       ['Generative AI Nanodegree', 'https://www.udacity.com/certificate/e/33f2e972-e53e-11ee-8ca3-43f01c9f7762'],
