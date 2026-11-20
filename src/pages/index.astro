@@ -7,7 +7,7 @@ const experience = [
     company: 'JioHotstar',
     logo: '/logos/jiohotstar.png',
     role: 'Senior Software Engineer, Backend',
-    dates: '2024 – now',
+    dates: '2024 – 2026',
     bullets: [
       'Architected and led a rebuild of the <b>P0 entitlement read path</b> (<b>~50K RPS</b> peak): shipped an in-memory plan SDK to production and load-tested the new service at <b>15 ms P99</b> on <b>15–20% fewer pods</b>',
       'Re-architected purchase and upgrade flows to launch <b>add-on subscriptions</b>, driving <b>~20% revenue growth</b>; team won <b>“Astral Team Award”</b> (2026)',
@@ -45,14 +45,14 @@ const experience = [
 ---
 <Base pageType="ProfilePage">
   <section class="hero">
-    <img class="avatar" src="/shagun.jpg" alt="Shagun Khemka, Senior Software Engineer at JioHotstar" width="112" height="112" fetchpriority="high" />
+    <img class="avatar" src="/shagun.jpg" alt="Shagun Khemka, Senior Software Engineer" width="112" height="112" fetchpriority="high" />
     <h1 class="hi">Hey, I'm Shagun Khemka.</h1>
   </section>
   <p class="tag">
     I build backend platforms that <em>stay fast under heavy load</em>, and production AI systems that stay cheap and correct.
   </p>
   <p class="lede">
-    Senior Software Engineer at <b>JioHotstar</b>, working on the subscriptions platform.
+    Senior backend engineer, most recently at <b>JioHotstar</b> on the subscriptions platform.
     Previously <b>FamPay (YC S19)</b> and <b>Instamojo</b>. Based in Mumbai.
   </p>
   <div class="links">
@@ -108,6 +108,22 @@ const experience = [
     </ul>
     <div class="tags"><span>Multi-model routing</span><span>Vision</span><span>Tool use</span><span>Cost controls</span><span>LLM observability</span></div>
     <p class="stack">Next.js · FastAPI · Postgres · Claude Sonnet + Haiku (production) · GPT, Gemini, Sarvam (integrated) · AWS via Pulumi · Prometheus + Grafana</p>
+  </article>
+
+  <article class="pj">
+    <div class="top">
+      <h3>WhatsApp Connect Service<span class="st">in production</span></h3>
+      <span class="l private">private</span>
+    </div>
+    <p class="d">A multi-tenant gateway, built for a logistics ERP software company, that connects each customer's own WhatsApp Business number to their ERP install. I designed, built and run it on my own; three client businesses are onboarded.</p>
+    <ul>
+      <li><b>Self-serve onboarding:</b> a customer connects their number through Meta Embedded Signup. The code-to-token exchange happens inside the service, so the app secret never reaches a customer install, and the token is handed over exactly once.</li>
+      <li><b>Webhook routing:</b> every customer's Meta webhooks arrive at one endpoint, are signature-verified and routed per account. ERPs receive events over a long-poll in about a second, a per-minute pull, or a signed HTTPS push with back-off; delivery is at least once.</li>
+      <li><b>Security:</b> HMAC-signed requests, AES-GCM encryption at rest, an SSRF guard on outbound pushes (public IPs only, no redirects), and TOTP admin sign-in behind an IP allowlist.</li>
+      <li><b>Small footprint:</b> one Go binary on SQLite (WAL) with continuous Litestream backup to S3. Load-tested on a laptop at <b>~8.5K signed webhooks/s</b> (p99 ~12 ms) and <b>~5 ms p99</b> delivery across 1,000 concurrent long-polls, with zero errors.</li>
+    </ul>
+    <div class="tags"><span>Multi-tenant</span><span>Webhooks</span><span>Long-polling</span><span>HMAC</span><span>SQLite</span></div>
+    <p class="stack">Go · chi · SQLite (WAL) + Litestream · Prometheus · AWS Lightsail + S3 via Pulumi</p>
   </article>
 
 
